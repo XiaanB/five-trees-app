@@ -1,8 +1,12 @@
 import { Drawer } from "expo-router/drawer";
 import { View, Text } from "react-native";
 import { globalStyles } from "./styles"; // Import styles
+import { Stack } from "expo-router";
+import { useAuthGuard } from "../config/authGuard";
+
 
 export default function Layout() {
+  useAuthGuard();
   return (
     <View style={{ flex: 1 }}>
       {/* HEADER */}
