@@ -1,19 +1,23 @@
 import { Tabs } from "expo-router/tabs";
-import { Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "expo-router";
+import { TouchableOpacity } from "react-native";
+import { DrawerActions } from '@react-navigation/native'; // Import DrawerActions
+import { Stack } from "expo-router";
 
 export default function TabsLayout() {
-  const navigation = useNavigation();
+  const navigation = useNavigation(); // Get access to navigation
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "tomato",
         headerLeft: () => (
-          <Pressable onPress={() => navigation.openDrawer()} style={{ marginLeft: 15 }}>
-            <Ionicons name="menu" size={24} color="black" />
-          </Pressable>
+          <TouchableOpacity
+            onPress={() => navigation.dispatch(DrawerActions.openDrawer())} // Use DrawerActions to open drawer
+            style={{ marginLeft: 15 }}
+          >
+            <Ionicons name="menu" size={28} color="black" />
+          </TouchableOpacity>
         ),
       }}
     >
@@ -21,21 +25,21 @@ export default function TabsLayout() {
         name="index"
         options={{
           title: "Home",
-          tabBarIcon: ({ color }) => <Ionicons name="home" size={24} color={color} />,
+          tabBarIcon: ({ color, size }) => <Ionicons name="home" color={color} size={size} />,
         }}
       />
       <Tabs.Screen
         name="products"
         options={{
           title: "Products",
-          tabBarIcon: ({ color }) => <Ionicons name="cart" size={24} color={color} />,
+          tabBarIcon: ({ color, size }) => <Ionicons name="cart" color={color} size={size} />,
         }}
       />
       <Tabs.Screen
         name="education"
         options={{
           title: "Education",
-          tabBarIcon: ({ color }) => <Ionicons name="book" size={24} color={color} />,
+          tabBarIcon: ({ color, size }) => <Ionicons name="book" color={color} size={size} />,
         }}
       />
     </Tabs>
