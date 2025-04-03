@@ -19,7 +19,7 @@ function CustomDrawerContent(props) {
     await signOut(auth);
     router.replace("/auth/sign-in"); // Redirect to sign-in after logout
   };
-
+console.log("Drawer is rendering!"); // Debugging log
   return (
     <DrawerContentScrollView {...props}>
       <DrawerItem label="About" onPress={() => props.navigation.navigate("about")} />

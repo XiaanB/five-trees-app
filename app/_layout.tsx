@@ -8,6 +8,7 @@ import { useAuthGuard } from "../config/authGuard";
 export default function Layout() {
   useAuthGuard();
   return (
+    
     <View style={{ flex: 1 }}>
       {/* HEADER */}
       <View style={{ backgroundColor: "#6200ea", padding: 20 }}>
